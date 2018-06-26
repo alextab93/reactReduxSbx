@@ -41,26 +41,24 @@ export default class TodoList extends Component {
         return (
             <div className="container">
                 <div className="d-flex justify-content-center">
-                    <div className="col-5 card">
+                    <div className="col-5 card shadow">
                         <div className="card-body">
                             <div className="form-group text-left">
-                                <label className="px-3">Description:</label>
-                                <div className="d-flex">
+                                <label>Description:</label>
+                                <div className="row">
                                     <div className="col-8">
                                         <input className="form-control mr-3" type="text" value={this.state.todo} onChange={this.handleInput}/>
                                     </div>
                                     <div className="col-4">
-                                        <button className="btn btn-success" onClick={() => this.addTodo()}>Save</button>
+                                        <button className="btn btn-success btn-block" onClick={() => this.addTodo()}>Save</button>
                                     </div>
                                 </div>
 
                             </div>
                             <ul className="list-group">
-                                {
-                                    this.state.list.map(item => (
-                                        <TodoItem key={'todo_' + item.id} item={item} change={() => this.handleChange(item.id)}/>
-                                    ))
-                                }
+                                {this.state.list.map(item => (
+                                    <TodoItem key={'todo_' + item.id} item={item} change={() => this.handleChange(item.id)}/>
+                                ))}
                             </ul>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TodoItem from '../Presentational/TodoItem';
+import { TodoItem } from '../Presentational/TodoItem';
 
 export default class TodoList extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ export default class TodoList extends Component {
            }
            return item;
         });
-        this.setState({todo: '', list: newList});
+        this.setState({list: newList});
     }
 
     handleInput({target}) {
@@ -58,16 +58,7 @@ export default class TodoList extends Component {
                             <ul className="list-group">
                                 {
                                     this.state.list.map(item => (
-                                        <li key={'todo_' + item.id} className="list-group-item">
-                                            <input type="checkbox" checked={item.state} onChange={() => this.handleChange(item.id)}/>
-
-                                            <label className="switch">
-                                                <input type="checkbox"/>
-                                                <div className="slider round"></div>
-                                            </label>
-
-                                            <span>{item.name}</span>
-                                        </li>
+                                        <TodoItem key={'todo_' + item.id} item={item} change={() => this.handleChange(item.id)}/>
                                     ))
                                 }
                             </ul>
